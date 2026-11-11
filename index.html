@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Una piccola sorpresa ❤️</title>
+<style>
+body {
+  background: #171827;
+  color: white;
+  font-family: Georgia, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+main { text-align: center; padding: 25px; }
+h1 { color: #eadbff; }
+input, button {
+  padding: 13px;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  margin: 8px;
+}
+button { background: #eadbff; cursor: pointer; }
+#letter { display: none; font-size: 32px; }
+#error { color: pink; }
+</style>
+</head>
+<body>
+<main>
+  <div id="login">
+    <h1>Una piccola sorpresa ❤️</h1>
+    <p>Inserisci il PIN per continuare</p>
+    <input id="pin" type="password"
+      inputmode="numeric" maxlength="4"
+      placeholder="••••">
+    <br>
+    <button onclick="checkPin()">Entra</button>
+    <p id="error"></p>
+  </div>
+  <div id="letter">ciao ❤️</div>
+</main>
+<script>
+function checkPin() {
+  if (document.getElementById("pin").value === "0430") {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("letter").style.display = "block";
+  } else {
+    document.getElementById("error").textContent =
+      "PIN non corretto. Riprova.";
+  }
+}
+</script>
+</body>
+</html>
