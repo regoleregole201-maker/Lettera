@@ -3,57 +3,181 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Una piccola sorpresa ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una lettera per Stella ❤️</title>
+
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: #171827;
-  color: white;
-  font-family: Georgia, serif;
+  margin: 0;
+  min-height: 100vh;
+  padding: 25px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  margin: 0;
+  background: radial-gradient(circle at top, #34304b, #171827 75%);
+  color: #f8f2ff;
+  font-family: Georgia, serif;
 }
-main { text-align: center; padding: 25px; }
-h1 { color: #eadbff; }
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  padding: 35px;
+  border: 1px solid rgba(234,219,255,0.25);
+  border-radius: 22px;
+  background: rgba(24,24,41,0.95);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.35);
+}
+
+h1 {
+  text-align: center;
+  color: #eadbff;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.subtitle {
+  text-align: center;
+  color: #d5cde2;
+  margin-bottom: 25px;
+}
+
 input, button {
-  padding: 13px;
-  border-radius: 10px;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 15px auto;
+  padding: 15px;
   border: none;
+  border-radius: 12px;
   font-size: 18px;
-  margin: 8px;
 }
-button { background: #eadbff; cursor: pointer; }
-#letter { display: none; font-size: 32px; }
-#error { color: pink; }
+
+input {
+  text-align: center;
+  letter-spacing: 8px;
+}
+
+button {
+  background: #eadbff;
+  color: #292239;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #d8c0fa;
+}
+
+#error {
+  color: #ffb9c5;
+  text-align: center;
+}
+
+#letter {
+  display: none;
+}
+
+#letter h2 {
+  text-align: center;
+  color: #eadbff;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+#letter p {
+  font-size: 17px;
+  line-height: 1.85;
+  white-space: pre-line;
+}
+
+.signature {
+  text-align: right;
+  color: #eadbff;
+  margin-top: 30px;
+}
+
+.hearts {
+  text-align: center;
+  font-size: 26px;
+  margin-top: 25px;
+}
 </style>
 </head>
+
 <body>
-<main>
+
+<div class="container">
+
   <div id="login">
     <h1>Una piccola sorpresa ❤️</h1>
-    <p>Inserisci il PIN per continuare</p>
-    <input id="pin" type="password"
-      inputmode="numeric" maxlength="4"
-      placeholder="••••">
-    <br>
-    <button onclick="checkPin()">Entra</button>
+
+    <p class="subtitle">
+      Inserisci il PIN per continuare...
+    </p>
+
+    <form id="pinForm">
+      <input
+        type="password"
+        id="pin"
+        inputmode="numeric"
+        maxlength="6"
+        placeholder="••••••"
+        required
+      >
+
+     <button type="submit">
+  Conferma ❤️
+     </button>
+    </form>
+
     <p id="error"></p>
   </div>
-  <div id="letter">ciao ❤️</div>
-</main>
+
+  <div id="letter">
+
+    <h2>Una lettera per Stella ❤️</h2>
+
+    <p>Cara Stella,
+
+ricordi quando ti ho parlato di ciò che provavo in questi ultimi giorni? Ecco, sono riuscito, penso, a togliermelo. E sai come? Facendoti questo regalo. Ho capito che ciò che mi rende effettivamente felice, che mi fa stare bene, è farti dei regali, anche se piccoli, però la ciambella o il cornetto non bastano. Non bastano perchè ci vuole poco ad andare in un supermercato e comprarne due a poco prezzo, senza aver fatto nulla. Si, okok, "conta il gesto", ma io voglio darti di più perchè voglio che tu ti senta sempre amata. Quindi, fare questo regalo mi ha fatto un po' ritrovare me stesso, quello che non riuscivo più a vedere perchè offuscato dalla stanchezza probabilmente. Ogni parte del mio tempo che posso cerco di usarla per fare qualcosa per te, e voglio continuare perchè sei la cosa che mi fa stare bene.
+
+Te Stella, sei diventata la parola amore per me.</p>
+
+    <p class="signature">
+      Ti amo,<br>
+      Dal tuo Ranocchio 🐸.
+    </p>
+
+    <div class="hearts">
+      ❤️❤️❤️
+    </div>
+
+  </div>
+
+</div>
+
 <script>
-function checkPin() {
-  if (document.getElementById("pin").value === "0430") {
+document.getElementById("pinForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const pin = document.getElementById("pin").value;
+
+  if (pin === "043010") {
     document.getElementById("login").style.display = "none";
     document.getElementById("letter").style.display = "block";
   } else {
     document.getElementById("error").textContent =
-      "PIN non corretto. Riprova.";
+      "PIN non corretto. Riprova ❤️";
+
+    document.getElementById("pin").value = "";
   }
-}
+});
 </script>
+
 </body>
 </html>
